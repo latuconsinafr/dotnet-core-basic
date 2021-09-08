@@ -26,3 +26,12 @@
 /Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/obj/Debug/net5.0/ref/dotnet-basic.dll
 /Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/obj/Debug/net5.0/dotnet-basic.pdb
 /Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/obj/Debug/net5.0/dotnet-basic.genruntimeconfig.cache
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Humanizer.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Npgsql.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/latuconsinafr/Personal/IT/Practices/ASP.NET/apps/dotnet-basic/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
