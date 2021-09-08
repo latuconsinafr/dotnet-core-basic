@@ -12,22 +12,23 @@ namespace dotnet_basic.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        public ProductsController(IProductRepository productRepository)
+        private readonly IBaseRepository<Product> productRepository;
+
+        public ProductsController(IBaseRepository<Product> productRepository)
         {
-            _productRepository = productRepository;
+            this.productRepository = productRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return Ok(await _productRepository.GetAll());
+            return Ok(await this.productRepository.GetAll());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(Guid id)
         {
-            Product product = await _productRepository.Get(id);
+            Product product = await this.productRepository.GetById(id);
             if(product == null)
                 return NotFound();
 
@@ -35,43 +36,28 @@ namespace dotnet_basic.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateProduct(CreateProductDto createProductDto)
+        public async Task<ActionResult> CreateProduct(Product product)
         {
-            Product product = new()
-            {
-                Name = createProductDto.Name,
-                Price = createProductDto.Price,
-                DateCreated = DateTime.Now
-            };
-
-            await _productRepository.Add(product);
-            return Ok(product);
+            await this.productRepository.Add(product);
+            return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateProduct(int id, UpdateProductDto updateProductDto)
+        public async Task<ActionResult> UpdateProduct(Guid id, Product product)
         {
-            Product product = new()
-            {
-                ProductId = id,
-                Name = updateProductDto.Name,
-                Price = updateProductDto.Price,
-                DateUpdated = DateTime.Now
-            };
-
-            await _productRepository.Update(product);
-            return Ok(product);
+            await this.productRepository.Update(id, product);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteProduct(int id)
+        public async Task<ActionResult> DeleteProduct(Guid id)
         {
-            Product product = await _productRepository.Get(id);
+            Product product = await this.productRepository.GetById(id);
             if(product == null)
                 return NotFound();
 
-            await _productRepository.Delete(id);
-            return Ok(product);
+            await this.productRepository.Remove(id);
+            return Ok();
         }
     }
 }

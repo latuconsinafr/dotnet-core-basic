@@ -2,7 +2,7 @@ version: '3.8'
  
 services:
  
-  postgresql_database:
+  db:
     image: postgres:latest
     environment:
       - POSTGRES_USER=admin
@@ -12,9 +12,9 @@ services:
       - "5432:5432"
     restart: always
     volumes:
-      - database-data:/var/lib/postgresql/data/
+      - db_data:/var/lib/postgresql/data/
      
-  pgadmin:
+  dbadmin:
     image: dpage/pgadmin4
     environment:
       - PGADMIN_DEFAULT_EMAIL=pgadmin4@pgadmin.org
@@ -23,8 +23,17 @@ services:
       - "5050:80"
     restart: always
     volumes:
-      - pgadmin:/root/.pgadmin
+      - dbadmin:/root/.pgadmin
+
+  cache:
+    image: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - cache_data:/data
  
 volumes:
-  database-data:
-  pgadmin:
+  db_data:
+  dbadmin:
+  cache_data:

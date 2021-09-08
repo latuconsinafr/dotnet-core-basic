@@ -29,9 +29,16 @@ namespace dotnet_basic
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetSection("Redis")["DefaultConnection"];
+            });
+            
+            services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            // services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
+
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
